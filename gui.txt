@@ -1,0 +1,5 @@
+Plataforma / framework / biblioteca desktop (TUI):
+- ncurses: <https://en.wikipedia.org/wiki/Ncurses>
+
+Framework / biblioteca mobile:
+- kirigami: <https://github.com/KDE/kirigami> (aparentemente baseado em Qt)
