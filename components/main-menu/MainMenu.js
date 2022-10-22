@@ -4,11 +4,17 @@ import MainMenuButton from './MainMenuButton'
 import MainMenuSpacing from './MainMenuSpacing'
 import MainMenuMenu from './MainMenuMenu'
 
-export default function MainMenu() {
+export default function MainMenu(props) {
+  const { navigation } = props
+
+  function onPlay() {
+    navigation.navigate('Game')
+  }
+
   return (
     <View style={styles.container}>
       <MainMenuMenu>
-        <MainMenuButton>
+        <MainMenuButton onPress={onPlay}>
           <VText>Play</VText>
         </MainMenuButton>
         <MainMenuSpacing />

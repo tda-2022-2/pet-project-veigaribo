@@ -1,7 +1,9 @@
 import { Pressable, StyleSheet } from 'react-native'
 
 export default function MainMenuButton(props) {
-  return <Pressable style={styles.button}>{props.children}</Pressable>
+  const { onPress } = props
+
+  return <Pressable style={styles.button} onPress={onPress}>{props.children}</Pressable>
 }
 
 const styles = StyleSheet.create({

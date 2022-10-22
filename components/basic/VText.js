@@ -1,12 +1,16 @@
 import { StyleSheet, Text } from 'react-native'
 
 export default function VText(props) {
-  return <Text style={styles.text}>{props.children}</Text>
+  const { color, size } = props
+  const style = styles({ color, size })
+
+  return <Text style={style.text}>{props.children}</Text>
 }
 
-const styles = StyleSheet.create({
+const styles = ({ color = 'red', size = 12 }) => StyleSheet.create({
   text: {
-    color: 'red',
+    color: color,
     fontFamily: 'Terminus',
+    fontSize: size
   },
 })
