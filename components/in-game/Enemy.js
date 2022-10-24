@@ -1,32 +1,33 @@
 import { Pressable, StyleSheet, View } from 'react-native'
-import VText from '../basic/VText'
-import { useGameContext, enemyDamage } from '../../context'
+import { VText, VFillBar } from '../basic'
+import { useGameContext } from '../../context'
+import { damage } from '../../game'
 
 export default function Enemy() {
-  const { items, dispatch } = useGameContext()
+  const { data, dispatch } = useGameContext()
 
   function onPress() {
-    const action = enemyDamage(1)
-    dispatch(action)
+    damage(data, dispatch)
   }
 
-  const { enemy } = items
+  const { enemy } = data
   const { appearance } = enemy
 
   return (
-    <View style={styles.enemy}>
+    <View style={styles.container}>
       <Pressable onPress={onPress}>
         <VText color={appearance.color} size={72}>{appearance.glyph}</VText>
       </Pressable>
+      <VText color={appearance.color}>{enemy.health}/{enemy.maxHealth}</VText>
+      <VFillBar fill={enemy.health / enemy.maxHealth} barColor={appearance.color} />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  enemy: {
-    height: '100%',
+  container: {
+    height: '200px',
     backgroundColor: '#000',
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
