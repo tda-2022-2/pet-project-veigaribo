@@ -3,9 +3,11 @@ import { StatusBar } from 'expo-status-bar'
 import { StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { ContextProvider } from '../game'
+import { ContextProvider as GameContextProvider } from '../game'
+import { ContextProvider as NetworkContextProvider } from '../network'
 import { MainMenu } from './main-menu'
 import { Game } from './in-game'
+import { Connect } from './connect'
 
 const Stack = createNativeStackNavigator()
 
@@ -19,14 +21,17 @@ export default function App() {
   return (
     <>
       <StatusBar style="auto" />
-      <ContextProvider style={styles.main}>
-        <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="MainMenu" component={MainMenu} />
-            <Stack.Screen name="Game" component={Game} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </ContextProvider>
+      <GameContextProvider >
+        <NetworkContextProvider >
+          <NavigationContainer style={styles.main}>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="MainMenu" component={MainMenu} />
+              <Stack.Screen name="Game" component={Game} />
+              <Stack.Screen name="Connect" component={Connect} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </NetworkContextProvider>
+      </GameContextProvider>
     </>
   )
 }

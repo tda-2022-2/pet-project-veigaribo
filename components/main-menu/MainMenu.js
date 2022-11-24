@@ -11,6 +11,10 @@ export default function MainMenu(props) {
     navigation.navigate('Game')
   }
 
+  function onConnect() {
+    navigation.navigate('Connect')
+  }
+
   return (
     <View style={styles.container}>
       <MainMenuMenu>
@@ -18,8 +22,8 @@ export default function MainMenu(props) {
           <VText>Play</VText>
         </MainMenuButton>
         <MainMenuSpacing />
-        <MainMenuButton>
-          <VText>Credits</VText>
+        <MainMenuButton onPress={onConnect}>
+          <VText>Connect</VText>
         </MainMenuButton>
       </MainMenuMenu>
     </View>

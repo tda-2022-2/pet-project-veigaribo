@@ -1,12 +1,9 @@
 import { Pressable, StyleSheet, View } from 'react-native'
-import { VText } from '../basic'
-import Enemy from './Enemy'
-import { useGameContext } from '../../game'
+import VText from '../basic/VText'
+import ServerInput from './ServerInput'
 
-export default function Game(props) {
+export default function Connect(props) {
   const { navigation } = props
-  const { data } = useGameContext()
-  const { player, misc } = data
 
   function onMenu() {
     navigation.navigate('MainMenu')
@@ -14,11 +11,7 @@ export default function Game(props) {
 
   return (
     <View style={styles.container}>
-      <VText size={50}>{player.score}</VText>
-      <View style={styles.middle}>
-        <Enemy />
-        <VText>{misc.message}</VText>
-      </View>
+      <ServerInput/>
       <Pressable onPress={onMenu} style={styles.button}>
         <VText size={36}>Menu</VText>
       </Pressable>
@@ -30,16 +23,9 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     backgroundColor: '#000',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-  },
-  middle: {
-    backgroundColor: '#000',
-    display: 'flex',
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    flexGrow: 1
   },
   button: {
     backgroundColor: 'transparent',
