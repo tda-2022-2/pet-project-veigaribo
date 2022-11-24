@@ -1,14 +1,15 @@
 import { roll } from '../dice'
 
 function make({
-  name, appearance, health, ac
+  name, appearance, health, ac, bounty = health
 }) {
   return {
     name,
     appearance,
     health,
     maxHealth: health,
-    ac
+    ac,
+    bounty
   }
 }
 

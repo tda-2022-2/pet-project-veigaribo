@@ -1,7 +1,6 @@
 import { Pressable, StyleSheet, View } from 'react-native'
 import { VText, VFillBar } from '../basic'
-import { useGameContext } from '../../context'
-import { damage } from '../../game'
+import { useGameContext, damage } from '../../game'
 
 export default function Enemy() {
   const { data, dispatch } = useGameContext()

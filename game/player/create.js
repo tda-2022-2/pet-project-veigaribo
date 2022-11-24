@@ -8,6 +8,7 @@ export function create(
     damage: {
       // 1d4 + 0
       count: 1, sides: 4, mod: 0
-    }
+    },
+    score: 0
   }
 }

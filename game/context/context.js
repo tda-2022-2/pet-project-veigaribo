@@ -12,11 +12,16 @@ const initial = {
 const Context = createContext()
 
 const reducer = (state, action) => {
-  const enemy = enemyReducer(state.enemy, action)
-  const player = playerReducer(state.player, action)
-  const misc = miscReducer(state.misc, action)
+  const scheduled = []
+  const schedule = (action) => scheduled.push(action)
 
-  return { enemy, player, misc }
+  // apply each update
+  const enemy = enemyReducer(schedule, state.enemy, action)
+  const player = playerReducer(schedule, state.player, action)
+  const misc = miscReducer(schedule, state.misc, action)
+
+  const newState = { enemy, player, misc }
+  return scheduled.reduce((acc, action) => reducer(acc, action), newState)
 }
 
 export function ContextProvider(props) {
